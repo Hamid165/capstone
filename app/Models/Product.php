@@ -14,6 +14,11 @@ class Product extends Model
         'stock', 'image', 'is_best_seller'
     ];
 
+    protected $casts = [
+        'is_best_seller' => 'boolean',
+        'price' => 'decimal:2',
+    ];
+
     public function reviews()
     {
         return $this->hasMany(Review::class);

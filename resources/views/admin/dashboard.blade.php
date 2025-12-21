@@ -3,143 +3,157 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div
-        class="relative bg-gradient-to-r from-emerald-600 to-teal-500 rounded-2xl p-6 md:p-10 shadow-lg mb-8 text-white overflow-hidden">
-        <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
-
-        <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <h2 class="text-3xl font-bold mb-2">Selamat Datang, {{ Auth::user()->name }}! 👋</h2>
-                <p class="text-emerald-50 opacity-90">Hari ini adalah waktu yang tepat untuk mengecek stok tanaman
-                    hidroponik.</p>
-            </div>
-            <a href="{{ route('products.create') }}"
-                class="bg-white text-emerald-600 hover:bg-emerald-50 px-6 py-3 rounded-xl font-semibold shadow-md transition transform hover:-translate-y-1 flex items-center gap-2">
-                <i class="fas fa-plus-circle"></i> Tambah Produk Baru
-            </a>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <!-- Card 1: Total Pendapatan -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div>
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Pendapatan</p>
+            <h3 class="text-2xl font-bold text-gray-800">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</h3>
+            <p class="text-xs text-emerald-500 mt-1 font-medium">Tahun {{ date('Y') }}</p>
+        </div>
+        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl">
+            <i class="fas fa-wallet"></i>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-
-        <div
-            class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-center justify-between">
-            <div>
-                <p class="text-gray-500 text-sm font-medium mb-1">Total Tanaman</p>
-                <h3 class="text-3xl font-bold text-gray-800">120 <span class="text-sm font-normal text-gray-400">Pcs</span>
-                </h3>
-            </div>
-            <div
-                class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
-                <i class="fas fa-leaf"></i>
-            </div>
+    <!-- Card 2: Pesanan Baru -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div>
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Pesanan Baru</p>
+            <h3 class="text-2xl font-bold text-gray-800">{{ $newOrdersCount }}</h3>
+            <p class="text-xs text-blue-500 mt-1 font-medium">Perlu diproses</p>
         </div>
-
-        <div
-            class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-center justify-between">
-            <div>
-                <p class="text-gray-500 text-sm font-medium mb-1">Pesanan Baru</p>
-                <h3 class="text-3xl font-bold text-gray-800">5 <span class="text-sm font-normal text-gray-400">Order</span>
-                </h3>
-            </div>
-            <div
-                class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
-                <i class="fas fa-shopping-basket"></i>
-            </div>
-        </div>
-
-        <div
-            class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition flex items-center justify-between">
-            <div>
-                <p class="text-gray-500 text-sm font-medium mb-1">Total Pendapatan</p>
-                <h3 class="text-3xl font-bold text-gray-800">Rp 2.5jt</h3>
-            </div>
-            <div
-                class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center text-2xl shadow-inner">
-                <i class="fas fa-wallet"></i>
-            </div>
+        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl">
+            <i class="fas fa-shopping-cart"></i>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-        <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2">Aksi Cepat</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-                <a href="{{ route('products.index') }}"
-                    class="group p-4 rounded-xl border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50 transition flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 mb-3 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center text-xl group-hover:scale-110 transition">
-                        <i class="fas fa-boxes"></i>
-                    </div>
-                    <span class="text-sm font-semibold text-gray-600 group-hover:text-emerald-700">Kelola Produk</span>
-                </a>
-
-                <a href="#"
-                    class="group p-4 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 mb-3 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl group-hover:scale-110 transition">
-                        <i class="fas fa-truck-loading"></i>
-                    </div>
-                    <span class="text-sm font-semibold text-gray-600 group-hover:text-blue-700">Cek Pesanan</span>
-                </a>
-
-                <a href="#"
-                    class="group p-4 rounded-xl border border-gray-100 hover:border-purple-200 hover:bg-purple-50 transition flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 mb-3 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-xl group-hover:scale-110 transition">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <span class="text-sm font-semibold text-gray-600 group-hover:text-purple-700">Data Pelanggan</span>
-                </a>
-
-                <a href="#"
-                    class="group p-4 rounded-xl border border-gray-100 hover:border-orange-200 hover:bg-orange-50 transition flex flex-col items-center text-center">
-                    <div
-                        class="w-12 h-12 mb-3 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-xl group-hover:scale-110 transition">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                    <span class="text-sm font-semibold text-gray-600 group-hover:text-orange-700">Pengaturan</span>
-                </a>
-
-            </div>
+    <!-- Card 3: Total Produk -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div>
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Produk</p>
+            <h3 class="text-2xl font-bold text-gray-800">{{ $totalProducts }}</h3>
+            <p class="text-xs text-gray-400 mt-1 font-medium">Item aktif</p>
         </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <i class="fas fa-exclamation-circle text-red-500"></i> Stok Menipis
-            </h3>
-
-            <div class="space-y-4">
-                <div class="flex items-center gap-4 p-3 rounded-lg bg-red-50 hover:bg-red-100 transition">
-                    <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-red-500 shadow-sm">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="text-sm font-bold text-gray-800">Sawi Pakcoy</h4>
-                        <p class="text-xs text-red-600 font-semibold">Sisa: 2 Pcs</p>
-                    </div>
-                    <a href="#"
-                        class="text-xs bg-white px-2 py-1 rounded border shadow-sm text-gray-600 hover:text-emerald-600">Update</a>
-                </div>
-
-                <div class="flex items-center gap-4 p-3 rounded-lg bg-red-50 hover:bg-red-100 transition">
-                    <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-red-500 shadow-sm">
-                        <i class="fas fa-carrot"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="text-sm font-bold text-gray-800">Wortel Baby</h4>
-                        <p class="text-xs text-red-600 font-semibold">Sisa: 0 Pcs</p>
-                    </div>
-                    <a href="#"
-                        class="text-xs bg-white px-2 py-1 rounded border shadow-sm text-gray-600 hover:text-emerald-600">Update</a>
-                </div>
-            </div>
-
-            <a href="{{ route('products.index') }}"
-                class="block text-center mt-4 text-sm text-emerald-600 font-medium hover:underline">Lihat Semua Stok</a>
+        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xl">
+            <i class="fas fa-box-open"></i>
         </div>
     </div>
+
+    <!-- Card 4: Pelanggan -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+        <div>
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Pelanggan</p>
+            <h3 class="text-2xl font-bold text-gray-800">{{ number_format($totalCustomers) }}</h3>
+            <p class="text-xs text-emerald-500 mt-1 font-medium">Terdaftar</p>
+        </div>
+        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xl">
+            <i class="fas fa-users"></i>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Chart: Penjualan -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h3 class="text-lg font-bold text-gray-800 mb-4">Statistik Penjualan ({{ date('Y') }})</h3>
+        <canvas id="salesChart" height="250"></canvas>
+    </div>
+
+    <!-- Latest Orders -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Pesanan Terbaru</h3>
+            <a href="{{ route('orders.index') }}" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium">Lihat Semua</a>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-gray-50 text-gray-500">
+                    <tr>
+                        <th class="px-3 py-2">ID</th>
+                        <th class="px-3 py-2">Pelanggan</th>
+                        <th class="px-3 py-2">Total</th>
+                        <th class="px-3 py-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @forelse($recentOrders as $order)
+                        <tr>
+                            <td class="px-3 py-3 font-mono">#{{ $order->id }}</td>
+                            <td class="px-3 py-3">{{ $order->user->name ?? 'Guest' }}</td>
+                            <td class="px-3 py-3 text-emerald-600 font-bold">Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                            <td class="px-3 py-3">
+                                @php
+                                    $statusClasses = [
+                                        'pending' => 'bg-amber-100 text-amber-700',
+                                        'processing' => 'bg-blue-100 text-blue-700',
+                                        'shipped' => 'bg-purple-100 text-purple-700',
+                                        'completed' => 'bg-emerald-100 text-emerald-700',
+                                        'cancelled' => 'bg-red-100 text-red-700',
+                                    ];
+                                    $class = $statusClasses[$order->shipping_status] ?? 'bg-gray-100 text-gray-700';
+                                @endphp
+                                <span class="{{ $class }} px-2 py-1 rounded text-xs font-bold capitalize">{{ $order->shipping_status }}</span>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center py-4 text-gray-400">Belum ada pesanan terbaru.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {!! json_encode($chartLabels) !!},
+            datasets: [{
+                label: 'Pendapatan (Rp)',
+                data: {!! json_encode($chartData) !!},
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.parsed.y);
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return new Intl.NumberFormat('id-ID', { compactDisplay: "short", notation: "compact" }).format(value);
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
 @endsection

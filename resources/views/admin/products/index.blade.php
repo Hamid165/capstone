@@ -64,13 +64,35 @@
                                 <i class="fas fa-edit"></i>
                             </a>
                             
-                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="p-2 bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors" title="Hapus">
+                            <div x-data="{ open: false }">
+                                <button @click="open = true" class="p-2 bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors" title="Hapus">
                                     <i class="fas fa-trash"></i>
                                 </button>
-                            </form>
+                                
+                                {{-- Delete Confirmation Modal --}}
+                                <div x-show="open" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" x-cloak>
+                                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6 transform transition-all text-center" @click.away="open = false">
+                                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 text-red-500 text-2xl">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-slate-800 mb-2">Hapus Produk?</h3>
+                                        <p class="text-gray-500 text-sm mb-6">Produk yang dihapus tidak dapat dikembalikan.</p>
+                                        
+                                        <div class="flex gap-3 justify-center">
+                                            <button @click="open = false" type="button" class="px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-bold text-sm hover:bg-gray-50 transition-colors">
+                                                Batal
+                                            </button>
+                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="px-5 py-2.5 rounded-xl bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-colors shadow-lg shadow-red-200">
+                                                    Ya, Hapus
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>

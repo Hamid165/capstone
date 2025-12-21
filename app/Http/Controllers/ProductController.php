@@ -31,6 +31,7 @@ class ProductController extends Controller
         return view('admin.products.create');
     }
 
+
     // 3. Menyimpan Produk ke Database
     public function store(Request $request)
     {
@@ -44,9 +45,11 @@ class ProductController extends Controller
 
         $data = $request->all();
 
-        // Buat Slug otomatis (Contoh: "Selada Air" -> "selada-air")
-        // Sekarang error Str harusnya sudah hilang
+        // Buat Slug otomatis
         $data['slug'] = Str::slug($request->name);
+
+        // Handle Checkbox (Jika tidak dicentang, nilainya tidak dikirim form, jadi default false)
+        $data['is_best_seller'] = $request->has('is_best_seller');
 
         // Upload Gambar jika ada
         if ($request->hasFile('image')) {
@@ -77,6 +80,9 @@ class ProductController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
+        
+        // Handle Checkbox
+        $data['is_best_seller'] = $request->has('is_best_seller');
 
         // Cek jika ada gambar baru
         if ($request->hasFile('image')) {
