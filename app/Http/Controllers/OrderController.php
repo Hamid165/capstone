@@ -81,6 +81,11 @@ class OrderController extends Controller
         if ($order->payment_status == 'unpaid' || $order->payment_status == 'pending') {
             $this->checkMidtransStatus($order);
         }
+        
+        // Ensure Snap Token exists (Self-healing)
+        if ($order->payment_status == 'unpaid' && empty($order->snap_token)) {
+            $this->generateSnapToken($order);
+        }
 
         $order->load(['items.product', 'shippingRate']);
         return view('orders.show', compact('order'));

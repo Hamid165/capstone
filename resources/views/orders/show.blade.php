@@ -208,6 +208,11 @@
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script type="text/javascript">
       document.getElementById('pay-button').onclick = function(){
+        // Prevent multiple clicks
+        const btn = this;
+        btn.disabled = true;
+        btn.innerHTML = 'Memuat...';
+
         // SnapToken acquired from previous step
         snap.pay('{{ $order->snap_token }}', {
           // Optional
@@ -225,6 +230,11 @@
             /* You may add your own implementation here */
             // alert("payment failed!"); 
             window.location.reload();
+          },
+          onClose: function(){
+            /* Customer closed the popup without finishing the payment */
+            btn.disabled = false;
+            btn.innerHTML = 'Bayar Sekarang';
           }
         });
       };
