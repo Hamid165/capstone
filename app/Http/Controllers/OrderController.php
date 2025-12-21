@@ -182,4 +182,27 @@ class OrderController extends Controller
             }
         }
     }
+
+    private function generateSnapToken($order)
+    {
+        $params = [
+            'transaction_details' => [
+                'order_id' => $order->id,
+                'gross_amount' => (int) $order->total_price,
+            ],
+            'customer_details' => [
+                'first_name' => $order->user->name,
+                'email' => $order->user->email,
+                'phone' => $order->user->phone ?? '',
+            ],
+        ];
+
+        try {
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $order->snap_token = $snapToken;
+            $order->save();
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Failed to generate Snap Token for Order #{$order->id}: " . $e->getMessage());
+        }
+    }
 }
