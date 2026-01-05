@@ -38,7 +38,7 @@
 
         {{-- Right: Hero Image --}}
         <div class="w-full md:w-1/2 relative h-[50vh] md:h-auto overflow-hidden">
-            <img src="{{ asset('assets/dawuhbumi2.jpg') }}" 
+            <img src="{{ asset('assets/dawuhbumi10.jpg') }}" 
                  alt="Greenhouse Modern" 
                  class="absolute inset-0 w-full h-full object-cover object-center transform scale-125 hover:scale-135 transition-transform duration-[2000ms]">
             
@@ -185,40 +185,55 @@
             <p class="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">Kami berbagi pengetahuan untuk masa depan pertanian yang lebih baik.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {{-- Card 1 --}}
-            <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group cursor-pointer" data-aos="zoom-in-up">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="{{ asset('assets/kelompok.png') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+            {{-- Card 1: SD & SMP --}}
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group cursor-pointer h-full flex flex-col" data-aos="zoom-in-up">
+                <div class="h-56 overflow-hidden relative shrink-0">
+                    <img src="{{ asset('assets/sd_smp.jpeg') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                    <div class="absolute bottom-6 left-6 text-white">
+                    <div class="absolute bottom-6 left-6 text-white w-[90%]">
                         <span class="bg-[#4CAF50] px-3 py-1 text-xs font-bold rounded-md mb-2 inline-block">PEMULA</span>
-                        <h3 class="text-2xl font-bold">Siswa Sekolah</h3>
+                        <h3 class="text-xl font-bold leading-tight">Siswa SD & SMP</h3>
                     </div>
                 </div>
-                <div class="p-8">
-                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Kurikulum pengenalan tanaman dan praktik menanam sederhana untuk menumbuhkan cinta alam sejak dini.
+                <div class="p-6 flex-grow">
+                     <p class="text-gray-600 leading-relaxed text-sm">
+                        Pengenalan budidaya hidroponik dan praktik penanaman
                     </p>
-                    <!-- <span class="text-[#2E4F38] font-bold group-hover:text-[#4CAF50] transition-colors">Pelajari Lebih Lanjut &rarr;</span> -->
                 </div>
             </div>
 
-            {{-- Card 2 --}}
-             <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group cursor-pointer" data-aos="zoom-in-up" data-aos-delay="100">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="{{ asset('assets/dawuhbumi2.jpg') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            {{-- Card 2: Mahasiswa --}}
+             <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group cursor-pointer h-full flex flex-col" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="h-56 overflow-hidden relative shrink-0">
+                    <img src="{{ asset('assets/mahasiswa.jpeg') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                    <div class="absolute bottom-6 left-6 text-white">
+                    <div class="absolute bottom-6 left-6 text-white w-[90%]">
                         <span class="bg-blue-600 px-3 py-1 text-xs font-bold rounded-md mb-2 inline-block">LANJUTAN</span>
-                        <h3 class="text-2xl font-bold">Mahasiswa & Riset</h3>
+                        <h3 class="text-xl font-bold leading-tight">Mahasiswa & Profesional Universitas</h3>
                     </div>
                 </div>
-                <div class="p-8">
-                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Program magang intensif, penelitian skripsi, dan pengembangan teknologi IoT untuk pertanian.
+                <div class="p-6 flex-grow">
+                     <p class="text-gray-600 leading-relaxed text-sm">
+                        Kunjungan lapangan, pelatihan langsung, dan diskusi tentang hidroponik
                     </p>
-                    <!-- <span class="text-[#2E4F38] font-bold group-hover:text-[#4CAF50] transition-colors">Pelajari Lebih Lanjut &rarr;</span> -->
+                </div>
+            </div>
+
+            {{-- Card 3: Lokakarya --}}
+            <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all group cursor-pointer h-full flex flex-col" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="h-56 overflow-hidden relative shrink-0">
+                    <img src="{{ asset('assets/lokakarya.jpeg') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute bottom-6 left-6 text-white w-[90%]">
+                        <span class="bg-orange-500 px-3 py-1 text-xs font-bold rounded-md mb-2 inline-block">UMUM</span>
+                        <h3 class="text-xl font-bold leading-tight">Lokakarya Umum</h3>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow">
+                     <p class="text-gray-600 leading-relaxed text-sm">
+                        Pelatihan hidroponik rumahan untuk keluarga dan komunitas perkotaan
+                    </p>
                 </div>
             </div>
         </div>

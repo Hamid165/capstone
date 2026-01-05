@@ -73,7 +73,7 @@
             </div>
 
             <!-- Right Side: Image -->
-            <div class="hidden lg:block w-1/2 bg-cover bg-center relative" style="background-image: url('{{ asset('assets/dawuhbumi2.jpg') }}');">
+            <div class="hidden lg:block w-1/2 bg-cover bg-center relative" style="background-image: url('{{ asset('assets/dawuhbumi3.jpg') }}');">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-16 text-white max-w-xl">
                     <div class="w-16 h-1 bg-emerald-500 mb-6"></div>

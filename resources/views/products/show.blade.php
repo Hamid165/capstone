@@ -41,7 +41,7 @@
                     {{ Str::limit($product->description, 150) }}
                 </p>
 
-                <p class="text-sm text-gray-500 italic mb-8">(stok {{ $product->stock }} pcs)</p>
+                <p class="text-sm text-gray-500 italic mb-8">(stok {{ $product->stock }} kg)</p>
 
                 {{-- Short Feature List (Optional, hardcoded for consistency with image reference look) --}}
                 <div class="bg-emerald-50 rounded-xl p-4 border border-emerald-100 mb-8">

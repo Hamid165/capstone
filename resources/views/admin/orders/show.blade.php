@@ -26,7 +26,7 @@
                     </div>
                     <div class="flex-1">
                         <h4 class="font-bold text-gray-800">{{ $item->product->name ?? 'Produk Dihapus' }}</h4>
-                        <p class="text-sm text-gray-500">Rp {{ number_format($item->price, 0, ',', '.') }} x {{ $item->quantity }} pcs</p>
+                        <p class="text-sm text-gray-500">Rp {{ number_format($item->price, 0, ',', '.') }} x {{ $item->quantity }} kg</p>
                     </div>
                     <div class="text-right">
                         <p class="font-bold text-emerald-600">Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</p>

@@ -73,7 +73,7 @@ class OrderController extends Controller
     public function showCustomer(\App\Models\Order $order)
     {
         // Ensure user owns the order
-        if ($order->user_id !== \Illuminate\Support\Facades\Auth::id()) {
+        if ($order->user_id != \Illuminate\Support\Facades\Auth::id()) {
             abort(403);
         }
 
